@@ -4,8 +4,8 @@
  */
 
 const router = require("koa-router")();
-const { NoRouterPage } = require('../models/ErrorInfo')
-const { ErrorModel } = require('../models/ResModel')
+const { NoRouterPage } = require('./models/ErrorInfo')
+const { ErrorModel } = require('./models/ResModel')
 
 router.get("*", async (ctx, next) => {
   ctx.body = new ErrorModel(NoRouterPage)

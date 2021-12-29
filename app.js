@@ -5,11 +5,8 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
-
-
-const index = require('./routes/index')
-const blog = require('./routes/blog')
-const noRouter = require('./routes/404')
+const routing = require('./routes/index')
+const noRouter = require('./404')
 
 // error handler
 onerror(app)
@@ -26,6 +23,8 @@ app.use(views(__dirname + '/views', {
   extension: 'pug'
 }))
 
+routing(app)
+
 // logger
 app.use(async (ctx, next) => {
   const start = new Date()
@@ -34,9 +33,6 @@ app.use(async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
 
-// routes
-app.use(index.routes(), index.allowedMethods())
-app.use(blog.routes(), blog.allowedMethods())
 app.use(noRouter.routes(), noRouter.allowedMethods())
 
 // error-handling

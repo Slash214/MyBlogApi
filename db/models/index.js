@@ -4,7 +4,11 @@
  */
 
 const Blog = require("./Blog");
+const BlogDetail = require("./BlogDetail");
+const Tag = require("./Tag");
 
 module.exports = {
+  Tag,
+  BlogDetail,
   Blog,
 };

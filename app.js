@@ -7,7 +7,9 @@ const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 const routing = require('./routes/index')
 const noRouter = require('./404')
+const cors = require('koa-cors')
 
+app.use(cors())
 // error handler
 onerror(app)
 

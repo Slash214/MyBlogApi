@@ -23,6 +23,17 @@ function _formatDBTime(obj) {
   return obj;
 }
 
+
+const formatBlogDetails = (row) => {
+  const list = row.dataValues
+  if (list == null) {
+    return [];
+  }
+  // console.log('里面的', list)
+  return _formatDBTime(list);
+}
+
 module.exports = {
   formatBlog,
+  formatBlogDetails
 };

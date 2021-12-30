@@ -9,14 +9,6 @@ function timeModeFormat(str, mb) {
   return format(new Date(str), mb);
 }
 
-// function timeFormat(str) {
-//   return format(new Date(str), "yyyy.MM.dd");
-// }
-
-// function timeFormatTwo(str) {
-//   return format(new Date(str), "yyyy-MM-dd HH:mm:ss");
-// }
-
 function ago(value) {
   if (value) {
     // 计算出时间 单位秒

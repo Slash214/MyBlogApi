@@ -10,11 +10,9 @@ const { formatBlog, formatBlogDetails } = require('../utils/format')
 
 class BlogCtl {
     async getList (ctx) {
-       let { pageSize, pageIndex } = ctx.request.query 
+       let { pageSize = 20, pageIndex = 1 } = ctx.request.query 
        
-       pageSize = +pageSize || 20
        pageIndex = +pageIndex ? +pageIndex - 1 : +pageIndex
-
        const result = await Blog.findAndCountAll({
            order: [['id', 'desc']],
            limit: +pageSize,

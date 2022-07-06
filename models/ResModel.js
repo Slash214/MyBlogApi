@@ -3,7 +3,6 @@
  * @author 爱呵呵
  */
 
-
 // 基础模块
 class BaseModel {
     constructor({ state, data, message, code, total }) {
@@ -27,7 +26,6 @@ class BaseModel {
 class SuccessModel extends BaseModel {
     constructor({ data , total, message } ) {
         super({
-            state: 1,
             code: 200,
             data,
             total,
@@ -40,7 +38,6 @@ class SuccessModel extends BaseModel {
 class ErrorModel extends BaseModel {
     constructor({ code, message }) {
         super({
-            state: 0,
             code,
             message
         })

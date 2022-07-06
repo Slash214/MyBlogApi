@@ -20,7 +20,7 @@ const BlogDetail = seq.define('blogdetail', {
     content: {
         type: LONGTEXT,
         allowNull: false,
-        comment: '博客详情内容为富文本'
+        comment: '博客详情内容为MD文档'
     },
 })
 

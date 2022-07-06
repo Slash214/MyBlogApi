@@ -29,7 +29,6 @@ const formatBlogDetails = (row) => {
   if (list == null) {
     return [];
   }
-  // console.log('里面的', list)
   return _formatDBTime(list);
 }
 

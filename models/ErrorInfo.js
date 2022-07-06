@@ -14,6 +14,6 @@ module.exports = {
   },
   ArticleIdNull: {
     code: 4002,
-    message: "文章ID为不存在",
+    message: "文章不存在！",
   },
 };

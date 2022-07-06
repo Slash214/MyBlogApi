@@ -4,9 +4,11 @@
  */
 
 const router = require("koa-router")();
+const { NoRouterPage } = require('./models/ErrorInfo');
+const { ErrorModel } = require("./models/ResModel");
 
 router.get("(.*)", async (ctx, next) => {
-  ctx.body = { message: '404' }
+  ctx.body = new ErrorModel(NoRouterPage)
 })
 
 module.exports = router;

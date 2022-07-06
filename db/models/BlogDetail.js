@@ -12,11 +12,6 @@ const BlogDetail = seq.define('blogdetail', {
        allowNull: false,
        comment: '博客ID'
     },
-    author: {
-        type: STRING,
-        defaultValue: '大羊',
-        comment: '博客作者'
-    },
     content: {
         type: LONGTEXT,
         allowNull: false,

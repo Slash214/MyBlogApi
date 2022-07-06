@@ -1,24 +1,27 @@
 const router = require('koa-router')()
-const { getList, create, update, del, xqcreate, getDetails, xqupdate } = require('../controller/blog')
-const { addTag, getTagList, xgTag } = require('../controller/Tag')
+const { getList, addblog, fixblog, del, getDetails, addRemake, selComment } = require('../controller/blog')
+const { createTag, selectTag, fix } = require('../controller/Tag')
 
 router.prefix('/blog')
 
+
 /** 博客列表 */
 router.get('/list', getList)
-router.post('/add', create)
-router.put('/modify', update)
+router.post('/add', addblog)
+router.put('/fix', fixblog)
 router.get('/del', del)
 
 /**博客详情 */
 router.get('/detail', getDetails)
-router.post('/addDetail', xqcreate)
-router.put('/xgDetail', xqupdate)
 
 
 /**博客标签 */
-router.get('/tag', getTagList)
-router.post('/addtag', addTag)
-router.put('/xgtag', xgTag)
+router.get('/tag', selectTag)
+router.post('/addtag', createTag)
+router.put('/xgtag', fix)
+
+/**文章评论 */
+router.get('/comment', selComment)
+router.post('/addremake', addRemake)
 
 module.exports = router;

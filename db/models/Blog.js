@@ -35,6 +35,11 @@ const Blog = seq.define('blog', {
         type: INTEGER,
         defaultValue: 0,
         comment: '文章浏览量'
+    },
+    state: {
+         type: INTEGER,
+        defaultValue: 1,
+        comment: '状态，1正常， 0删除状态'
     }
 })
 

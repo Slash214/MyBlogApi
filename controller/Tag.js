@@ -9,16 +9,17 @@ const { formatBlog } = require('../utils/format')
  
 class TagCtl {
   async createTag(ctx) {
-    const { name } = ctx.request.body
+    let { name } = ctx.request.body
+    name = name.toLowerCase().replace(/( |^)[a-z]/g, (L) => L.toUpperCase())
     if (!name) {
-        ctx.body = new ErrorModel(ParameterError)
+      ctx.body = new ErrorModel(ParameterError)
     }
 
     const [user, created] = await Tag.findOrCreate({
-      where: { name }
+      where: { name },
     })
 
-    console.log(user)
+    // console.log(user)
     // console.log(created)
     let str = created ? '创建成功' : '已存在该标签'
     ctx.body = new SuccessModel({ message: str })

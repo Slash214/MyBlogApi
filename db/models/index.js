@@ -7,10 +7,12 @@ const Blog = require("./Blog");
 const BlogDetail = require("./BlogDetail");
 const Tag = require("./Tag");
 const Comment = require('./Comment')
+const Name = require('./Name')
 
 module.exports = {
   Tag,
   BlogDetail,
   Blog,
   Comment,
+  Name
 };

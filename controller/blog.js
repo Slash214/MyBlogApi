@@ -5,9 +5,9 @@
 
 const { Blog, BlogDetail, Comment } = require('../db/models')
 const { SuccessModel, ErrorModel } = require('../models/ResModel')
-const { ParameterError, ArticleIdNull } = require('../models/ErrorInfo')
+const { ParameterError, ArticleIdNull, LoginError } = require('../models/ErrorInfo')
 const { formatBlog, formatBlogDetails } = require('../utils/format')
-
+const jwt = require('jsonwebtoken')
 class BlogCtl {
     async getList (ctx) {
        let { pageSize = 20, pageIndex = 1 } = ctx.request.query 
@@ -156,6 +156,33 @@ class BlogCtl {
         let str = result?.dataValues ? '评论成功' : '评论失败'
         ctx.body = new SuccessModel({ message: str })
 
+    }
+    async login(ctx) {
+        const { username, password } = ctx.request.body 
+
+        if (!username || !password) {
+            ctx.body = new ErrorModel(ParameterError)
+            return
+        }
+        
+        // 这里就模拟登陆，直接返回数据。如果需要真实的就只需要去数据库增加然后这里查找就可以了
+        let obj = {
+            id: 7,
+            username,
+            avatar: 'https://img.pinkyang.cn/2022.07.09-4403.jpg',
+            nickname: '爱呵呵',
+            level: 'max',
+            name: 'SuperAdmin'
+        }
+
+        if (username !== 'super' || password !== 'xianhan@123') {
+            ctx.body = new ErrorModel(LoginError) 
+            return
+        } 
+    
+        let token = jwt.sign(obj, 'yjp_CHINANO1^he%#k&0508s*', { expiresIn: '7d' })
+        obj['token'] = token
+        ctx.body = new SuccessModel({ message: '登陆成功', data: obj })
     }
 }
 

@@ -1,9 +1,12 @@
 const router = require('koa-router')()
-const { getList, addblog, fixblog, del, getDetails, addRemake, selComment } = require('../controller/blog')
+const { getList, addblog, fixblog, del, getDetails, addRemake, selComment, login } = require('../controller/blog')
 const { createTag, selectTag, fix } = require('../controller/Tag')
 
 router.prefix('/blog')
 
+
+/** 模拟登陆 */
+router.post('/login', login)
 
 /** 博客列表 */
 router.get('/list', getList)

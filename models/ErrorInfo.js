@@ -9,11 +9,15 @@ module.exports = {
     message: "the current route is empty",
   },
   ParameterError: {
-    code: 4001,
+    code: 5001,
     message: "请求参数不完整",
   },
   ArticleIdNull: {
-    code: 4002,
+    code: 5002,
     message: "文章不存在！",
   },
+  LoginError: {
+    code: 5003,
+    message: '账号密码不正确'
+  }
 };

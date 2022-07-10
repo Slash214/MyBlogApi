@@ -152,7 +152,7 @@ class BlogCtl {
             nickname,
         })
 
-        console.log(result.dataValues)
+        console.log(result?.dataValues)
         let str = result?.dataValues ? '评论成功' : '评论失败'
         ctx.body = new SuccessModel({ message: str })
 

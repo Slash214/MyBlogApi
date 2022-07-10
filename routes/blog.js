@@ -1,6 +1,6 @@
 const router = require('koa-router')()
 const { getList, addblog, fixblog, del, getDetails, addRemake, selComment, login } = require('../controller/blog')
-const { createTag, selectTag, fix } = require('../controller/Tag')
+const { createTag, selectTag, fix, remove } = require('../controller/Tag')
 
 router.prefix('/blog')
 
@@ -22,6 +22,7 @@ router.get('/detail', getDetails)
 router.get('/tag', selectTag)
 router.post('/addtag', createTag)
 router.put('/xgtag', fix)
+router.get('/tagdel', remove)
 
 /**文章评论 */
 router.get('/comment', selComment)

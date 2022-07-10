@@ -33,8 +33,8 @@ class TagCtl {
   async fix(ctx) {
     const { name, id } = ctx.request.body
     if (!id) {
-        ctx.body = new SuccessModel(ParameterError)
-        return
+      ctx.body = new SuccessModel(ParameterError)
+      return
     }
 
     const result = await Tag.update({ name }, {
@@ -42,6 +42,22 @@ class TagCtl {
     })
 
     let str = result[0] > 0 ? '修改成功' : '修改失败 | 可能错误ID不正确'
+    ctx.body = new SuccessModel({ message: str })
+  }
+  async remove(ctx) {
+    const { id } = ctx.request.query
+
+    if (!id) {
+      ctx.body = new SuccessModel(ParameterError)
+      return
+    }
+
+    const result = await Tag.destroy({
+      where: { id }
+    })
+
+    console.log(result)
+    let str = result > 1 ? '删除成功' : '删除失败'
     ctx.body = new SuccessModel({ message: str })
   }
 }

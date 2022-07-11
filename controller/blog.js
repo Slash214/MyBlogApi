@@ -7,14 +7,18 @@ const { Blog, BlogDetail, Comment } = require('../db/models')
 const { SuccessModel, ErrorModel } = require('../models/ResModel')
 const { ParameterError, ArticleIdNull, LoginError } = require('../models/ErrorInfo')
 const { formatBlog, formatBlogDetails } = require('../utils/format')
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const { Op } = require("../db/type");
+
 class BlogCtl {
     async getList (ctx) {
-       let { pageSize = 20, pageIndex = 1 } = ctx.request.query 
+       let { pageSize = 20, pageIndex = 1, tag = '' } = ctx.request.query 
        
-       pageIndex = +pageIndex ? +pageIndex - 1 : +pageIndex
+        pageIndex = +pageIndex ? +pageIndex - 1 : +pageIndex
+        let whereOpt = { state: 1 }
+        if (tag)  whereOpt['tag'] =  { [Op.like]: `%${tag}%`}
         const result = await Blog.findAndCountAll({
-           where: { state: 1 },
+           where: whereOpt,
            order: [['id', 'desc']],
            limit: +pageSize,
            offset: pageSize * pageIndex

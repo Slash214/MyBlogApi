@@ -60,6 +60,8 @@ class TagCtl {
     let str = result > 1 ? '删除成功' : '删除失败'
     ctx.body = new SuccessModel({ message: str })
   }
+
+
 }
 
 module.exports = new TagCtl()

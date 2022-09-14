@@ -11,17 +11,17 @@ let MYSQL_CONF = {}
 if (isProd) {
     // 线上数据库
     MYSQL_CONF = {
-        host: '47.100.249.55',
-        user: 'blog',
-        password: 'chYniTSiSWz6bGhF',
+        host: '',
+        user: '',
+        password: '',
         prot: '3306',
-        database: 'blog'
+        database: ''
     }
 } else {
     MYSQL_CONF = {
         host: '127.0.0.1',
         user: 'root',
-        password: 'xianhan@123',
+        password: 'xianhan@777',
         prot: '3306',
         database: 'blog'
     } 

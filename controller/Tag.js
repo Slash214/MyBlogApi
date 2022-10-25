@@ -56,7 +56,7 @@ class TagCtl {
       where: { id }
     })
 
-    console.log(result)
+    // console.log(result)
     let str = result > 1 ? '删除成功' : '删除失败'
     ctx.body = new SuccessModel({ message: str })
   }

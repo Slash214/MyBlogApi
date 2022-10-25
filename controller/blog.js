@@ -1,6 +1,6 @@
 /**
  * @description 博客列表的增删查改
- * @author big yang
+ * @author 爱呵呵
  */
 
 const { Blog, BlogDetail, Comment } = require('../db/models')
@@ -69,7 +69,7 @@ class BlogCtl {
         }
 
         Reflect.ownKeys(item).forEach((key) => {
-            console.log(key, item[key])
+            // console.log(key, item[key])
             if (item[key] && key !== 'id' && key !== 'content') {
                 updateData[key] = item[key]
             }
@@ -79,8 +79,8 @@ class BlogCtl {
             }
         })
    
-        console.log('更新博客参数', updateData)
-        console.log('更新博客详情', details)
+        // console.log('更新博客参数', updateData)
+        // console.log('更新博客详情', details)
         
 
         const r1 = await Blog.update(updateData, {
@@ -156,7 +156,7 @@ class BlogCtl {
             nickname,
         })
 
-        console.log(result?.dataValues)
+        // console.log(result?.dataValues)
         let str = result?.dataValues ? '评论成功' : '评论失败'
         ctx.body = new SuccessModel({ message: str })
 

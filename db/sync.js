@@ -1,6 +1,6 @@
 /**
  * @description sequelize 同步数据库
- * @author big yang
+ * @author 爱呵呵
  */
 const seq = require("./seq");
 require("./models/index");

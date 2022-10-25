@@ -20,7 +20,8 @@ router.get("/avatar", async (ctx, next) => {
 
   console.log(id, md5);
   // 保持图片
-  fs.writeFileSync(`./public/avatar/${name}.png`, png);
+  fs.writeFileSync(`./../avatar/${name}.png`, png);
+  //   fs.writeFileSync(`./public/avatar/${name}.png`, png)
 
   ctx.body = new SuccessModel({
     code: 200,
@@ -28,6 +29,7 @@ router.get("/avatar", async (ctx, next) => {
     data: {
       name: `${name}.png`,
       md5,
+      baseUrl: "http:/yjpsix.com//avatar",
       id,
       size,
     },

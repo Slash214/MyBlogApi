@@ -47,14 +47,15 @@ md文档，使用的bytemd掘金同款md文档生成器！都可直接使用
 
 
 ###### 开发前的配置要求
-
 1. 需安装ndoe同时保证版本大于v10 
 2. 需配置mysql数据库的链接
 
 ###### **安装步骤**
+-   git clone  https://github.com/Slash214/MyBlogApi.git
+-   cd MyBligApi
+-   npm install
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+
 
 ```sh
 git clone https://github.com/Slash214/MyBlogApi.git
@@ -83,32 +84,12 @@ filetree
 ```
 
 
-### 开发的架构 
-
-请阅读[ARCHITECTURE.md](https://github.com/shaojintian/Best_README_template/blob/master/ARCHITECTURE.md) 查阅为该项目的架构。
-
-### 部署
-
-暂无
 
 ### 使用到的框架及包
 
 - [Koa2](https://getbootstrap.com)
 - [Mysql2](https://jquery.com)
 - [Seqlize](https://laravel.com)
-
-#### 如何参与开源项目
-
-贡献使开源社区成为一个学习、激励和创造的绝佳场所。你所作的任何贡献都是**非常感谢**的。
-
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
 
 ### 版本控制
 该项目使用Git进行版本管理。您可以在repository参看当前可用版本。
@@ -120,7 +101,6 @@ github@Slash214
 知乎:xxxx  &ensp; qq:1783331467 &ensp; 微信:A1783331467    
 
  *您也可以在贡献者名单中参看所有参与该项目的开发者。*
-
 ### 版权说明
 
 该项目签署了MIT 授权许可，详情请参阅 [LICENSE.txt](./LICENSE.txt)

@@ -1,3 +1,7 @@
+/**
+ * @descrion 博客路由
+ * @author 爱呵呵
+ */
 const router = require('koa-router')()
 const { getList, addblog, fixblog, del, getDetails, addRemake, selComment, login } = require('../controller/blog')
 const { createTag, selectTag, fix, remove } = require('../controller/Tag')

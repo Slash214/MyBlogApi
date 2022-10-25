@@ -4,7 +4,7 @@
  */
 
 // 判断是否是本地环境
-const { isProd } = require("../env.js");
+const { isProd } = require('../env.js')
 
 /**
  * @params host  主机地址 // 本地为127.0.0.1
@@ -14,24 +14,24 @@ const { isProd } = require("../env.js");
  * @params database  数据库名称
  */
 
-const MYSQL_CONF = {};
+let MYSQL_CONF = {}
 
 if (isProd) {
-  MYSQL_CONF = {
-    host: "",
-    user: "",
-    password: "",
-    prot: "3306",
-    database: "",
-  };
+    MYSQL_CONF = {
+        host: '',
+        user: '',
+        password: '',
+        prot: '3306',
+        database: '',
+    }
 } else {
-  MYSQL_CONF = {
-    host: "127.0.0.1",
-    user: "",
-    password: "",
-    prot: "3306",
-    database: "",
-  };
+    MYSQL_CONF = {
+        host: '127.0.0.1',
+        user: '',
+        password: '',
+        prot: '3306',
+        database: '',
+    }
 }
 
-module.exports = { MYSQL_CONF };
+module.exports = { MYSQL_CONF }

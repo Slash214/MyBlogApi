@@ -46,15 +46,19 @@ md文档，使用的bytemd掘金同款md文档生成器！都可直接使用
 
 
 
-###### 开发前的配置要求
+#### 开发前的配置要求
 1. 需安装ndoe同时保证版本大于v10 
 2. 需配置mysql数据库的链接
 
-###### **安装步骤**
+#### **安装步骤**
 -   git clone  https://github.com/Slash214/MyBlogApi.git
 -   cd MyBligApi
 -   npm install
 
+### 数据库替换
+在Conf 文件夹下 找到 db.js 文件 然后给MYSQL_CONF
+赋你自己电脑上的数据库配置文件，也可以是服务器上的数据库文件
+账号，密码，地址，端口，数据库名称。然后启动项目就可以运行了
 
 
 ```sh

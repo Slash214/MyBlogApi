@@ -1,6 +1,6 @@
 /**
  * @description 评论信息
- * @author 大羊
+ * @author  爱呵呵
  */
 
 const seq = require("../seq");

@@ -1,10 +1,10 @@
 /**
  * @description 博客详情
- * @author big yang
+ * @author 爱呵呵
  */
 
 const seq = require('../seq')
-const { STRING, LONGTEXT, INTEGER } = require('../type')
+const { LONGTEXT, INTEGER } = require('../type')
 
 const BlogDetail = seq.define('blogdetail', {
     blogid: {

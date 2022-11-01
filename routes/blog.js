@@ -3,11 +3,20 @@
  * @author 爱呵呵
  */
 const router = require('koa-router')()
-const { getList, addblog, fixblog, del, getDetails, addRemake, selComment, login } = require('../controller/blog')
+const {
+  getList,
+  addblog,
+  fixblog,
+  del,
+  delComment,
+  getDetails,
+  addRemake,
+  selComment,
+  login,
+} = require('../controller/blog')
 const { createTag, selectTag, fix, remove } = require('../controller/Tag')
 
 router.prefix('/blog')
-
 
 /** 模拟登陆 */
 router.post('/login', login)
@@ -21,7 +30,6 @@ router.get('/del', del)
 /**博客详情 */
 router.get('/detail', getDetails)
 
-
 /**博客标签 */
 router.get('/tag', selectTag)
 router.post('/addtag', createTag)
@@ -31,5 +39,6 @@ router.get('/tagdel', remove)
 /**文章评论 */
 router.get('/comment', selComment)
 router.post('/addremake', addRemake)
+router.get('/delcomment', delComment)
 
-module.exports = router;
+module.exports = router

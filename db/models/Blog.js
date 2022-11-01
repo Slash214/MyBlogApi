@@ -1,6 +1,6 @@
 /**
  * @description 博客
- * @author big yang
+ * @author 爱呵呵
  */
 
 const seq = require('../seq')

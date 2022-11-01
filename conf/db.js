@@ -27,10 +27,10 @@ if (isProd) {
 } else {
     MYSQL_CONF = {
         host: '127.0.0.1',
-        user: '',
-        password: '',
+        user: 'root',
+        password: 'xianhan@777',
         prot: '3306',
-        database: '',
+        database: 'blog',
     }
 }
 

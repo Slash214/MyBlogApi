@@ -11,11 +11,21 @@ const { Op } = require('../db/type')
 
 class BlogCtl {
   async getList(ctx) {
-    let { pageSize = 20, pageIndex = 1 } = ctx.request.query
+    let { pageSize = 20, pageIndex = 1, tag } = ctx.request.query
+
+    let whereOpt = { state: 1 }
+
+    if (tag) {
+      whereOpt = {
+        tag: {
+          [Op.like]: '%' + tag + '%',
+        },
+      }
+    }
 
     pageIndex = +pageIndex ? +pageIndex - 1 : +pageIndex
     const result = await Blog.findAndCountAll({
-      where: { state: 1 },
+      where: whereOpt,
       order: [['id', 'desc']],
       limit: +pageSize,
       offset: pageSize * pageIndex,
@@ -231,38 +241,25 @@ class BlogCtl {
     ctx.body = new SuccessModel({ message: '登陆成功', data: obj })
   }
   async search(ctx) {
-    let { pageSize = 20, pageIndex = 1, words, tag } = ctx.request.query
+    let { pageSize = 20, pageIndex = 1, words } = ctx.request.query
 
     pageIndex = +pageIndex ? +pageIndex - 1 : +pageIndex
 
-    if (!words && !tag) {
+    if (!words) {
       ctx.body = new ErrorModel(ParameterError)
       return
     }
 
-    let whereOpt = {}
-
-    if (words) {
-      whereOpt = {
-        [Op.or]: [
-          { 
-            title: { [Op.like]: "%" + words + "%" }
-          },
-          {
-            desc: { [Op.like]: "%" + words + "%" }
-          }
-        ]
-      }
+    let whereOpt = {
+      [Op.or]: [
+        {
+          title: { [Op.like]: '%' + words + '%' },
+        },
+        {
+          desc: { [Op.like]: '%' + words + '%' },
+        },
+      ],
     }
-
-    if (tag) {
-      whereOpt = {
-        tag: {
-          [Op.like]: "%" + tag + "%"
-        }
-      }
-    }
-     
 
     const result = await Blog.findAndCountAll({
       order: [['id', 'desc']],

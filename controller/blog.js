@@ -7,6 +7,7 @@ const { SuccessModel, ErrorModel } = require('../models/ResModel')
 const { ParameterError, ArticleIdNull, LoginError } = require('../models/ErrorInfo')
 const { formatBlog, formatBlogDetails } = require('../utils/format')
 const jwt = require('jsonwebtoken')
+const { Op } = require('../db/type')
 
 class BlogCtl {
   async getList(ctx) {
@@ -202,7 +203,6 @@ class BlogCtl {
     let str = result ? '删除成功' : '评论异常，删除失败'
     ctx.body = new SuccessModel({ data: result, message: str })
   }
-
   async login(ctx) {
     const { username, password } = ctx.request.body
 
@@ -229,6 +229,51 @@ class BlogCtl {
     let token = jwt.sign(obj, 'yjp_CHINANO1^he%#k&0508s*', { expiresIn: '7d' })
     obj['token'] = token
     ctx.body = new SuccessModel({ message: '登陆成功', data: obj })
+  }
+  async search(ctx) {
+    let { pageSize = 20, pageIndex = 1, words, tag } = ctx.request.query
+
+    pageIndex = +pageIndex ? +pageIndex - 1 : +pageIndex
+
+    if (!words && !tag) {
+      ctx.body = new ErrorModel(ParameterError)
+      return
+    }
+
+    let whereOpt = {}
+
+    if (words) {
+      whereOpt = {
+        [Op.or]: [
+          { 
+            title: { [Op.like]: "%" + words + "%" }
+          },
+          {
+            desc: { [Op.like]: "%" + words + "%" }
+          }
+        ]
+      }
+    }
+
+    if (tag) {
+      whereOpt = {
+        tag: {
+          [Op.like]: "%" + tag + "%"
+        }
+      }
+    }
+     
+
+    const result = await Blog.findAndCountAll({
+      order: [['id', 'desc']],
+      where: whereOpt,
+      limit: +pageSize,
+      offset: pageSize * pageIndex,
+    })
+
+    const item = formatBlog(result)
+    const total = result.count
+    ctx.body = new SuccessModel({ data: item, total })
   }
 }
 

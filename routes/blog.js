@@ -13,6 +13,7 @@ const {
   addRemake,
   selComment,
   login,
+  search,
 } = require('../controller/blog')
 const { createTag, selectTag, fix, remove } = require('../controller/Tag')
 
@@ -26,6 +27,7 @@ router.get('/list', getList)
 router.post('/add', addblog)
 router.put('/fix', fixblog)
 router.get('/del', del)
+router.get('/search', search)
 
 /**博客详情 */
 router.get('/detail', getDetails)
